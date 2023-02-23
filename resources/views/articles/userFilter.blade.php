@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">Ecco tutti gli articoli</h1>
+                <h1 class="text-center">Articoli caricati da: {{$user->name}}</h1>
+                <h4 class="text-center">Questo utente ha caricato {{$count}} articoli</h4>
             </div>
         </div>
         <div class="row">

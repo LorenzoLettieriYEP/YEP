@@ -16,7 +16,16 @@
             <a class="nav-link active" href="{{route("allArticles")}}">Tutti gli Articoli</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <div class="dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorie
+              </a>
+              <ul class="dropdown-menu">
+                @foreach ($categories as $category)
+                  <li><a class="dropdown-item" href="{{route("categoryFilter", compact("category"))}}">{{$category->name}}</a></li>
+                @endforeach
+              </ul>
+            </div>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">

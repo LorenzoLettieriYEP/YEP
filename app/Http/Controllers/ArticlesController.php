@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Articles;
+use App\Models\Category;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -16,7 +18,7 @@ class ArticlesController extends Controller
      */
     public function index(): View
     {
-        $articles = Articles::all();
+        $articles = Articles::orderBy("created_at", "DESC")->get();
         return view ("articles.allArticles", compact("articles"));
     }
 
@@ -48,11 +50,26 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Articles $articles): Response
+    public function show(Articles $article)
     {
-        //
+        return view("articles.showArticle", compact("article"));
     }
 
+    public function categoryFilter(Category $category){
+        $articles = $category->articles->sortBy("created_at")->reverse()->all();
+
+        $count = $category->articles->count();
+
+        return view("articles.categoryFilter", compact("articles", "category", "count"));
+    }
+
+    public function userFilter(User $user){
+        $articles = $user->articles->sortBy("created_at")->reverse()->all();
+
+        $count = $user->articles->count();
+
+        return view("articles.userFilter", compact("articles", "user", "count"));
+    }
     /**
      * Show the form for editing the specified resource.
      */

@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">Ecco tutti gli articoli</h1>
+                <h1 class="text-center">Categoria: {{$category->name}}</h1>
+                <h4 class="text-center">Questa categoria ha {{$count}} articoli</h4>
             </div>
         </div>
         <div class="row">
