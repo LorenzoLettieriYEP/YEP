@@ -35,7 +35,7 @@ class ArticlesController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
+        dd($request);
         Auth::user()->Articles()->create([
             "title" => $request->input("title"),
             "subtitle" => $request->input("subtitle"),

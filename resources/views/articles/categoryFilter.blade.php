@@ -15,6 +15,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{$article->title}}</h5>
                           <h6 class="card-title">{{$article->subtitle}}</h6>
+                          <p>{{$article->category->name}}</p>
                           <a href="{{route("showArticle", compact("article"))}}" class="btn btn-primary">Leggi Articolo</a>
                         </div>
                       </div>

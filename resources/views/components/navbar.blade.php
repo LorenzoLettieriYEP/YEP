@@ -31,7 +31,20 @@
         <ul class="navbar-nav ms-auto">
             @auth
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="">Ciao! {{Auth::user()->name}}</a>
+              <div class="dropdown">
+                <a class="nav-link active dropdown-toggle" aria-current="page" href="" data-bs-toggle="dropdown" aria-expanded="false">Ciao! {{Auth::user()->name}}</a>
+                <ul class="dropdown-menu">
+                  @if(Auth::user()->is_admin == true)
+                  <li><a class="dropdown-item" href="{{route("admin-zone")}}">Admin Zone</a></li>
+                  @endif
+                  @if(Auth::user()->is_revisor == true)
+                  <li><a class="dropdown-item" href="">Revisor Zone</a></li>
+                  @endif
+                  @if(Auth::user()->is_writer == true)
+                  <li><a class="dropdown-item" href="">Writer Zone</a></li>
+                  @endif
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
